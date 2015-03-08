@@ -119,7 +119,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(file_exists($filePath));
 
         $data = [
-            'image' => new \CURLFile($filePath)
+            'image' => new CURLFile($filePath)
         ];
 
         $client = new Client($this->testUrl);
@@ -432,5 +432,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($data, json_decode($client->post($data), JSON_OBJECT_AS_ARRAY)['post']);
     }
+
+
 
 }

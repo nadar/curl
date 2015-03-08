@@ -28,10 +28,6 @@ class Curl
      */
     public function __construct($url = null)
     {
-        if (!extension_loaded('curl')) {
-            throw new \ErrorException('cURL library is not loaded');
-        }
-
         $this->url    = $url;
         $this->handle = curl_init($url);
 
@@ -61,24 +57,6 @@ class Curl
     public function autoReferer($autoReferer = true)
     {
         return $this->setBooleanOption(CURLOPT_AUTOREFERER, $autoReferer);
-    }
-
-    /**
-     * Set an option for a cURL transfer
-     *
-     * @param $option
-     * @param $value
-     *
-     * @return $this
-     * @throws \ErrorException
-     */
-    private function setOption($option, $value)
-    {
-        if (curl_setopt($this->handle, $option, $value) === false) {
-            throw new \ErrorException('failure.');
-        }
-
-        return $this;
     }
 
     /**
@@ -2406,4 +2384,22 @@ class Curl
            curl_reset($this->handle);
        }
        */
+
+    /**
+     * Set an option for a cURL transfer
+     *
+     * @param $option
+     * @param $value
+     *
+     * @return $this
+     * @throws \ErrorException
+     */
+    private function setOption($option, $value)
+    {
+        if (curl_setopt($this->handle, $option, $value) === false) {
+            throw new \ErrorException('failure.');
+        }
+
+        return $this;
+    }
 }
