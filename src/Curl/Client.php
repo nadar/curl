@@ -262,4 +262,16 @@ class Client
             $this->curl->setConnectTimeout($time);
         }
     }
+
+    /**
+     * @param string $url
+     *
+     * @return Client
+     */
+    public function setUrl($url)
+    {
+        $this->curl->setUrl($url);
+
+        return $this;
+    }
 }
