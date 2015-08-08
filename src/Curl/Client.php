@@ -190,7 +190,7 @@ class Client
     public function getStatusMessage()
     {
         $header = $this->headers[0];
-        $parts  = explode(' ', $header);
+        $parts  = explode(' ', $header, 3);
 
         return $parts[2];
     }
