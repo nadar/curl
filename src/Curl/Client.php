@@ -80,7 +80,7 @@ class Client
 
     public function delete(array $data = [])
     {
-        $this->curl->setUrl($this->getBaseUrl() . '?' . http_build_query($data));
+        $this->curl->setUrl($this->curl->getUrl() .'?'. http_build_query($data));
 
         return $this->curl->setCustomRequest('DELETE')->execute();
     }
